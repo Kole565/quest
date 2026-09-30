@@ -1,0 +1,460 @@
+/* ============================================================
+   LIVECORP — site.css
+   Дизайн-токены, типографика, карточки, анимации
+   ============================================================ */
+
+:root {
+  color-scheme: dark;
+  /* --- Цвета --- */
+  --bg: #07120c;
+  --bg-2: #0d1c14;
+  --panel: #102418;
+  --panel-hi: #16321f;      /* hover-фон карточки */
+  --line: #1e4630;
+  --line-hi: #3dffa0;       /* hover-бордер */
+  --green: #3dffa0;
+  --green-dim: #1f8a4c;
+  --green-lime: #6bff8f;    /* для пульсации логотипа */
+  --cream: #e8f5e9;
+  --mute: #8aa894;
+  --warn: #c4ff6b;
+
+  /* --- Типографика --- */
+  --font: "Segoe UI", "Helvetica Neue", sans-serif;
+  --display: "Palatino Linotype", Palatino, "Times New Roman", serif;
+
+  --fs-h1: clamp(2rem, 5vw, 3.4rem);
+  --fs-h2: 1.7rem;
+  --fs-h3: 1.05rem;
+  --fs-lead: 1.15rem;
+  --fs-body: 1rem;
+  --fs-small: 0.92rem;
+  --fs-kicker: 12px;
+  --fs-nav: 13px;
+
+  --lh-tight: 1.2;
+  --lh-body: 1.65;
+
+  --ls-wide: 0.28em;
+  --ls-mid: 0.12em;
+  --ls-kicker: 0.22em;
+
+  /* --- Движение --- */
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --dur-card: 220ms;
+  --dur-logo: 2800ms;
+}
+
+/* ============================================================
+   База
+   ============================================================ */
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  background:
+    radial-gradient(1200px 500px at 10% -10%, #143322 0%, transparent 55%),
+    var(--bg);
+  color: var(--cream);
+  min-height: 100vh;
+}
+
+.wrap { max-width: 920px; margin: 0 auto; padding: 0 24px 80px; }
+
+/* ============================================================
+   Типографика — единые начертания
+   ============================================================ */
+
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  line-height: var(--lh-tight);
+  margin: 0 0 12px;
+}
+
+h1 {
+  font-size: var(--fs-h1);
+  color: var(--cream);
+}
+
+h2 {
+  font-size: var(--fs-h2);
+  color: var(--warn);
+}
+
+h3 {
+  font-size: var(--fs-h3);
+  color: var(--green);
+  margin-bottom: 8px;
+}
+
+p { margin: 0 0 1em; }
+
+.lead {
+  font-size: var(--fs-lead);
+  color: var(--mute);
+  max-width: 42em;
+}
+
+.kicker {
+  color: var(--green);
+  font-size: var(--fs-kicker);
+  letter-spacing: var(--ls-kicker);
+  text-transform: uppercase;
+  margin: 0 0 12px;
+}
+
+.fineprint {
+  color: var(--mute);
+  font-size: var(--fs-small);
+}
+
+a {
+  color: var(--green);
+  text-decoration: none;
+  transition: color var(--dur-card) var(--ease);
+}
+a:hover { text-decoration: underline; }
+
+.kicker a { color: var(--green); }
+.kicker a:hover { text-decoration: underline; }
+
+/* ============================================================
+   Шапка / навигация
+   ============================================================ */
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 18px;
+  padding: 14px 18px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  outline: 1px solid var(--green-dim);
+  outline-offset: 5px;
+  box-shadow: inset 0 0 0 1px #0a1a11;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--cream);
+  letter-spacing: var(--ls-wide);
+  font-size: var(--fs-nav);
+  font-weight: 700;
+}
+
+.brand:hover { text-decoration: none; }
+
+/* Обёртка логотипа — сюда вешаем пульсацию */
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 61px;
+  animation: logoPulse var(--dur-logo) ease-in-out infinite;
+}
+
+.brand-mark img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  /* мягкий «перелив» к лаймовому через фильтр */
+  filter: drop-shadow(0 0 0 rgba(107, 255, 143, 0));
+  transition: filter var(--dur-logo) ease-in-out;
+}
+
+@keyframes logoPulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgba(107, 255, 143, 0)) brightness(1);
+  }
+  50% {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 8px rgba(107, 255, 143, 0.55)) brightness(1.12) hue-rotate(-8deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-mark { animation: none; }
+}
+
+/* ============================================================
+   Навигация — подчёркивание, растущее слева
+   ============================================================ */
+
+nav {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-size: var(--fs-nav);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+nav a {
+  color: var(--mute);
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color var(--dur-card) var(--ease);
+}
+
+nav a span {
+  position: relative;
+  display: inline-block;
+}
+
+/* Полоска-подчёркивание: по умолчанию сжата в 0 */
+nav a span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur-card) var(--ease);
+}
+
+/* Hover — полоска растёт слева направо */
+nav a:hover,
+nav a:focus-visible {
+  color: var(--green);
+  text-decoration: none;
+}
+
+nav a:hover span::after,
+nav a:focus-visible span::after {
+  transform: scaleX(1);
+}
+
+/* Активная страница — полоска уже видна */
+nav a[aria-current="page"] {
+  color: var(--green);
+}
+
+nav a[aria-current="page"] span::after {
+  transform: scaleX(1);
+  background: var(--green);
+}
+
+/* ============================================================
+   Hero
+   ============================================================ */
+
+.hero { padding: 56px 0 28px; }
+
+/* ============================================================
+   Карточки — единый стиль для .grid.four и .grid.three
+   ============================================================ */
+
+.grid {
+  display: grid;
+  gap: 16px;
+  margin: 28px 0;
+}
+
+@media (min-width: 700px) {
+  .grid.four  { grid-template-columns: repeat(2, 1fr); }
+  .grid.three { grid-template-columns: repeat(3, 1fr); }
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  /* чтобы ховер был предсказуемым */
+  transform: translateY(0) scale(1);
+  transition:
+    transform var(--dur-card) var(--ease),
+    background-color var(--dur-card) var(--ease),
+    border-color var(--dur-card) var(--ease),
+    box-shadow var(--dur-card) var(--ease);
+  will-change: transform;
+}
+
+.card h3 { margin: 0 0 8px; }
+
+.card p {
+  margin: 0;
+  color: var(--cream);
+}
+
+/* Hover — рост + смена цвета */
+.card:hover,
+.card:focus-within {
+  transform: translateY(-4px) scale(1.03);
+  background: var(--panel-hi);
+  border-color: var(--line-hi);
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(61, 255, 160, 0.25);
+}
+
+.card:hover h3,
+.card:focus-within h3 {
+  color: var(--warn);
+}
+
+/* ============================================================
+   Нумерованные шаги (about.html)
+   ============================================================ */
+
+.steps { counter-reset: step; }
+
+.steps h3::before {
+  counter-increment: step;
+  content: "0" counter(step);
+  display: block;
+  color: var(--green);
+  letter-spacing: 0.2em;
+  font-family: var(--font);
+  font-size: 11px;
+  margin-bottom: 6px;
+}
+
+/* ============================================================
+   Цитата, CTA, 404
+   ============================================================ */
+
+.quote {
+  border-left: 3px solid var(--green-dim);
+  margin: 28px 0;
+  padding: 8px 0 8px 18px;
+  color: var(--mute);
+  font-style: italic;
+}
+
+.cta {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 12px 18px;
+  border: 1px solid var(--green);
+  color: var(--bg);
+  background: var(--green);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: var(--fs-kicker);
+  font-weight: 700;
+  transition:
+    filter var(--dur-card) var(--ease),
+    transform var(--dur-card) var(--ease);
+}
+.cta:hover {
+  filter: brightness(1.08);
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.err { padding: 80px 0 20px; }
+.err h1 { font-size: clamp(3rem, 10vw, 6rem); margin-bottom: 8px; }
+.err ul { padding-left: 18px; }
+.err li { margin: 8px 0; }
+
+/* ============================================================
+   Футер
+   ============================================================ */
+
+footer {
+  margin-top: 56px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  color: var(--mute);
+  font-size: var(--fs-kicker);
+  letter-spacing: var(--ls-mid);
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   Светлая тема — по системной настройке
+   ============================================================ */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+
+    /* --- Фон и панели --- */
+    --bg: #f4fbf6;
+    --bg-2: #eaf6ee;
+    --panel: #ffffff;
+    --panel-hi: #f0fbf4;
+    --line: #c9e3d3;
+    --line-hi: #1f8a4c;
+
+    /* --- Акценты --- */
+    --green: #0f7a43;        /* тёмно-зелёный вместо неона — читаемо на белом */
+    --green-dim: #1f8a4c;
+    --green-lime: #2fbf62;
+    --cream: #0c1f14;        /* основной текст теперь тёмный */
+    --mute: #4a6b57;
+    --warn: #7a5a00;         /* «предупреждение» — тёплый коричнево-жёлтый */
+  }
+
+  /* Фоновый градиент — мягче и светлее */
+  body {
+    background:
+      radial-gradient(1200px 500px at 10% -10%, #d8f2e0 0%, transparent 55%),
+      var(--bg);
+  }
+
+  /* Карточки: на светлом фоне тень мягче, бордер заметнее */
+  .card:hover,
+  .card:focus-within {
+    box-shadow:
+      0 10px 24px rgba(15, 60, 35, 0.12),
+      0 0 0 1px rgba(15, 122, 67, 0.25);
+  }
+
+  /* CTA: тёмный фон вместо неона — иначе текст на белом не читается */
+  .cta {
+    background: var(--green);
+    border-color: var(--green);
+    color: #ffffff;
+  }
+
+  /* Шапка: убираем неоновую «двойную рамку», оставляем спокойную */
+  header {
+    outline-color: var(--line);
+    box-shadow: inset 0 0 0 1px rgba(15, 122, 67, 0.06);
+  }
+
+  /* Логотип: пульсация слабее — на светлом неон «слепит» */
+  @keyframes logoPulse {
+    0%, 100% {
+      transform: scale(1);
+      filter: drop-shadow(0 0 0 rgba(47, 191, 98, 0)) brightness(1);
+    }
+    50% {
+      transform: scale(1.04);
+      filter: drop-shadow(0 0 6px rgba(47, 191, 98, 0.35)) brightness(1.06);
+    }
+  }
+}
+
+/* ============================================================
+   Уважение к настройкам пользователя
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
