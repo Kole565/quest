@@ -34,3 +34,6 @@ There is problems with current state of project.
 - Remove agent from sudoers
 - Change kali password
 - Remove ~/dev at agent
+- Remove nginx config
+- Change agent0152 pass
+- Remove reviews at downloads
