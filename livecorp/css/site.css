@@ -382,7 +382,7 @@ footer {
    Светлая тема — по системной настройке
    ============================================================ */
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
     color-scheme: light;
 
