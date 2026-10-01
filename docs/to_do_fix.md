@@ -37,3 +37,6 @@ There is problems with current state of project.
 - Remove nginx config
 - Change agent0152 pass
 - Remove reviews at downloads
+- Clear browser data
+- Clear shell data
+- Remove MC server
