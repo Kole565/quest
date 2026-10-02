@@ -24,6 +24,7 @@ There is problems with current state of project.
 
 - QR Code to file sharing where ip, password, instruction to connect as agent0152, password from archive with an locator app
 - Message at domain - change user and download file
+- locator app encrypted with TETRIANDOX
 - locator app showing photo of it park with red dot at the toilet
 - base64 encrypted file with connecto to MC info
 - MC installed at VM
@@ -40,3 +41,4 @@ There is problems with current state of project.
 - Clear browser data
 - Clear shell data
 - Remove MC server
+- Remove mouse integration
