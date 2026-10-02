@@ -26,6 +26,7 @@ There is problems with current state of project.
 - Message at domain - change user and download file
 - locator app encrypted with TETRIANDOX
 - locator app showing photo of it park with red dot at the toilet
+- [locator app have custom icon]
 - base64 encrypted file with connecto to MC info
 - MC installed at VM
 - [MC is aliased]
@@ -39,6 +40,6 @@ There is problems with current state of project.
 - Change agent0152 pass
 - Remove reviews at downloads
 - Clear browser data
-- Clear shell data
+- Clear shell data (at VM, VPS for every user)
 - Remove MC server
-- Remove mouse integration
+- Enable mouse integration
