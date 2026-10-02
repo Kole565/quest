@@ -43,3 +43,17 @@ There is problems with current state of project.
 - Clear shell data (at VM, VPS for every user)
 - Remove MC server
 - Enable mouse integration
+
+
+## Test run 1
+
+- Wher I got password for guest at VM and ivan at VPS?
+- No hint about using manual.
+- Systemctl is not allowed to user agent0152.
+- Morse code is good only on title page.
+- Archive 0451 is too large.
+- minisweeper, not minesweeper
+- Delete MC singleplayer world.
+- Clear logs at VPS.
+
+
