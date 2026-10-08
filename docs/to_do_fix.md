@@ -56,3 +56,33 @@ There is problems with current state of project.
 - [ ] Delete MC singleplayer world.
 - [ ] Clear logs at VPS.
 
+## Comment of beta testing
+
+- [x] Portable mc in repo
+- [x] Paswordless agent
+- [x] Allow enable/disable nginx for agent
+- [x] More permisive sites-available/active for nginx
+- [x] Configure symlink at sites/enabled to be working out of the box
+- [ ] Hide nginx conig
+- [x] Remove Guest user
+- [x] Add Kyrilic layout
+- [ ] Ask to update letter/notes content
+- [x] Update VPS Motd, include spaces around it
+- [x] Update base64 to small txt, instruction update
+- [ ] Clarify letter
+
+Desktop:
+
+- [x] Add readme at desktop
+- [ ] Add memes with watermark to qr code content
+- [x] Add notes
+- [x] Add todo
+- [ ] Add screenshots (?)
+
+~:
+
+- [x] ssh
+- [ ] bash history
+- [x] rm aliaces for mc
+- [x] docs about corp (need to gen)
+- [x] downloads with reviews/logs.
